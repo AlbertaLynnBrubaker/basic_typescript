@@ -1,11 +1,16 @@
-const character = 'sam'
+let character = 'sam'
+let age = 30
+let isBlackbelt = false
 
-console.log(character)
-1
-const inputs = document.querySelectorAll('input')
+character = 'andi' // the value of the variable can be changed
+// character = 20  but the type of the variable cannot be changed
+// age = 'funstuff' <--- not allowed
+// isBlackbelt = 'false' <--- not allowed
 
-console.log(inputs)
+const circ = (diameter: number) => { // <--- syntax variableName: variableType
+  return diameter * Math.PI
+}
 
-inputs.forEach(input => {
-  console.log(input)
-})
+// console.log(circ('hello')) <--- will log NaN to the console. TS knows that Math.PI is a num.
+
+console.log(circ(10))
