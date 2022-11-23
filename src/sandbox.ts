@@ -1,25 +1,31 @@
-type StringOrNum = string | number // < --- we can create an alias for virtually anything we can type elsewhere
-type objWithName = { name: string, uid: StringOrNum } // <--- we can use our other alias in this object alias and replace virtually all the repeat code we had below with a single aliased word
+let greet: Function
+// we can specify a function signature
 
-const c = (input: any) => {
-  console.log(input)
+// example 1
+let greeting: (a: string, b: string) => void
+
+greeting = (name: string, greeting: string ) => {
+  console.log(`${greeting}, ${name}`)
 }
 
-const logDetails = (uid: StringOrNum, item: string) => {
-  c(`${item} has a uid of ${uid}`)
+// example 2
+let calc: (a: number, b: number, c: string) => number
+
+calc = (num1: number, num2: number, action: string) => {
+  if(action === 'add') {
+    return num1 + num2
+  } else if(action === 'subtract') {
+    return num1 - num2
+  } else {
+    return 0
+  }
 }
 
-const greet = (user: objWithName) => {
-  c(`${user.name} says hello`)
+// example 3
+let logDetails: (obj: {name: string, age: number}) => void
+
+type person = {name: string, age: number}
+
+logDetails = (ninja: person) => {
+  console.log(`${ninja.name} is ${ninja.age} years old`)
 }
-
-const greetAgain = (user: objWithName) => {
-  c(`${user.name} says hello`)
-}
-
-logDetails(1234, 'playing card')
-greet({name: 'alie', uid: 1234})
-greetAgain({name: 'alie', uid: 1234})
-
-
-

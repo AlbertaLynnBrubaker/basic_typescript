@@ -263,3 +263,35 @@ let result = minus(10, 7) // <--- TS will infer the return value of minus here, 
 
 // } <--- the return value of a function that does not return anything is a type: void. TSC will compile void as undefined BUT in TS void and undefined are separate things with similar behavior
 
+************************************************************
+
+## LESSON 8 ALIASES
+
+```
+type StringOrNum = string | number // < --- we can create an alias for virtually anything we can type elsewhere
+
+type objWithName = { name: string, uid: StringOrNum } // <--- we can use our other alias in this object alias and replace virtually all the repeat code we had below with a single aliased word
+
+
+const c = (input: any) => {
+  console.log(input)
+}
+
+
+const logDetails = (uid: StringOrNum, item: string) => {
+  c(`${item} has a uid of ${uid}`)
+}
+
+const greet = (user: objWithName) => {
+  c(`${user.name} says hello`)
+}
+
+const greetAgain = (user: objWithName) => {
+  c(`${user.name} says hello`)
+}
+
+logDetails(1234, 'playing card')
+greet({name: 'alie', uid: 1234})
+greetAgain({name: 'alie', uid: 1234})
+```
+
