@@ -1,3 +1,30 @@
+interface IsPerson {
+  name: string
+  age: number  
+  speak(a: string): void
+  spend(a: number): number
+}
+
+const me: IsPerson = {
+  name: 'alie',
+  age: 30,  
+  speak(text: string): void {
+    console.log(text)
+  },
+  spend(amount: number): number {
+    console.log(`I spent $${amount}`)
+    return amount
+  }
+}
+
+let someone: IsPerson
+
+const greetPerson = (person: IsPerson) => {
+  console.log(`Hello, ${person.name}`)
+}
+
+greetPerson(me)
+
 import Invoice from './classes/Invoice.js'
 
 const inv1 = new Invoice('alie', 'work on the website', 300)
@@ -8,9 +35,9 @@ invoices.push(inv1)
 invoices.push(inv2)
 console.log(invoices)
 
-invoices.forEach(inv => {
-  console.log(inv.format())
-})
+// invoices.forEach(inv => {
+//   console.log(inv.format())
+// })
 
 
 

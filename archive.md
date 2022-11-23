@@ -456,3 +456,7 @@ invoices.forEach(inv => {
 We changed the module property to es2015 and created the target property with a value of es6 in the tsconfig folder
 
 Otherwise, importing and exporting for modules works more or less exactly like ReactJS
+
+************************************************************
+
+## LESSON 14 INTERFACES
