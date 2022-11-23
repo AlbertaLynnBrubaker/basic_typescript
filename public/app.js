@@ -1,26 +1,18 @@
-const me = {
-    name: 'alie',
-    age: 30,
-    speak(text) {
-        console.log(text);
-    },
-    spend(amount) {
-        console.log(`I spent $${amount}`);
-        return amount;
-    }
-};
-let someone;
-const greetPerson = (person) => {
-    console.log(`Hello, ${person.name}`);
-};
-greetPerson(me);
 import Invoice from './classes/Invoice.js';
-const inv1 = new Invoice('alie', 'work on the website', 300);
-const inv2 = new Invoice('andi', 'work on the website', 250);
-let invoices = [];
-invoices.push(inv1);
-invoices.push(inv2);
-console.log(invoices);
+import Payment from './classes/Payment.js';
+// let docOne: HasFormatter
+// let docTwo: HasFormatter
+// docOne = new Invoice('alie', 'web work', 500)
+// docTwo = new Payment('sam', 'web work', 600)
+// let docs: HasFormatter[] = [] // <--- array will only take elements which meet the requirements of the HasFormatter interface
+// docs.push(docOne)
+// docs.push(docTwo)
+// const inv1 = new Invoice('alie', 'work on the website', 300)
+// const inv2 = new Invoice('andi', 'work on the website', 250)
+// let invoices: Invoice[] = [] 
+// invoices.push(inv1)
+// invoices.push(inv2)
+// console.log(invoices)
 // invoices.forEach(inv => {
 //   console.log(inv.format())
 // })
@@ -31,5 +23,12 @@ const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(type.value, toFrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });

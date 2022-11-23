@@ -460,3 +460,36 @@ Otherwise, importing and exporting for modules works more or less exactly like R
 ************************************************************
 
 ## LESSON 14 INTERFACES
+
+```
+interface IsPerson {
+  name: string
+  age: number  
+  speak(a: string): void
+  spend(a: number): number
+}
+
+const me: IsPerson = {
+  name: 'alie',
+  age: 30,  
+  speak(text: string): void {
+    console.log(text)
+  },
+  spend(amount: number): number {
+    console.log(`I spent $${amount}`)
+    return amount
+  }
+}
+
+let someone: IsPerson
+
+const greetPerson = (person: IsPerson) => {
+  console.log(`Hello, ${person.name}`)
+}
+
+greetPerson(me)
+
+... import Invoice module from lesson 13 ...
+
+... form stuff from lesson 10 ...
+```
