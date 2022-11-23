@@ -203,3 +203,8 @@ obj = { name: false, age: '36' } // <--- we can change the values to any type
 LESSON 6 BETTER WORKFLOW AND TSCONFIG
 
 on command line use $ tsc --init    to initialize a tsconfig.json file in the working directory
+
+in the tsconfig.json file we have to comment in the:
+  rootDir property with a value of "./src"
+  outDir property with a value of "./public"
+  add an "include": ['src'] outside the compilerOptions property to only watch files inside the src folder
