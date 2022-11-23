@@ -1,38 +1,47 @@
+// EXPLICIT TYPES
+let character: string
+let age: number
+let isLoggedIn: boolean
+
+// age = 'alie' <--- not allowed
+age = 30
+// isLoggedIn = 'true' <--- not allowed
+isLoggedIn = true
+
 // ARRAYS
-let names = ['alie', 'andi', 'sam']
+let ninjas: string[]
 
-// names = 'frankie' <--- not allowed. An array can't be redeclared as another type
+// ninjas = [10, 20] <--- not allowed
+ninjas = ['alie', 'sam']
 
-names.push('chris') // <--- allowed
-// names.push(10)  <--- not allowed. We cannot push a type that we did not initially declare
+let fruit: string[] = [] // <--- if we don't initialize the array as an empty array, we can't use array methods on it (like .push(), etc...) 
+fruit.push('banana')
 
-let numbers = [10, 20, 30, 40]
+// UNION TYPE
+let mixed: (string|number|boolean)[] = []
+mixed.push('hello')
+mixed.push(20)
+mixed.push(false)
+// => ['hello', 20, false]
 
-numbers.push(25) // <--- allowed
-// numbers.push('freddie') <--- not allowed
-
-let mixed = ['joe', 1, 'alice', 25] // <--- declared with both strings and nums
-
-mixed.push('bob')
-mixed.push(11)
-// => ['joe', 1, 'alice', 25, 'bob', 11]
-mixed[0] = 2 // <--- any allowed type can be replaced by any other allowed type
-// => [2, 1, 'alice', 25, 'bob', 11]
+let uid: string|number
+uid = '123'
+uid = 123
+// uid = false <--- not allowed
 
 // OBJECTS
-let ninja = {
-  name: 'alie',
-  belt: 'black',
-  age: 36 // <--- if we declare a property of an object as a particular type, that property will always have to be that type
+let funstuff: object
+funstuff = { name: 'alie', age: 36 }
+// funstuff = '' <--- not allowed
+
+let superFunstuff: {
+  name: string,
+  age: number,
+  hometown: string
 }
 
-// ninja.age = '25' <--- not allowed
-
-// ninja.skills = ['jujitsu', 'stealth'] <--- not allowed. We can't add new properties to an object after it has been declared !IMPORTANT!
-
-ninja = {
-  name: 'andi',
-  belt: 'brown',
-  age: 30,
-  // hometown: 'SF' <--- not allowed
-} // <--- allowed. We can redeclare the object BUT THE PROPERTIES MUST REMAIN THE SAME. We can change the values of the properties, but not the properties themselves OR their types. We cannot add new properties.
+superFunstuff = {
+  name: 'alie',
+  age: 36,
+  hometown: 'Edmonton'
+}
