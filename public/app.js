@@ -1,14 +1,24 @@
 "use strict";
-const anchor = document.querySelector('a'); // <--- adding an exclamation mark lets TS know that WE KNOW that variable will come back correctly
-//   console.log(anchor.href) <--- TS throws an error because it does not have access to the index.html page until after it compiles and it is worried our anchor is going to come back null
-// if(anchor){ <--- we can either add runtime logic to clear compiler errors
-//   console.log(anchor.href)
-// } 
-// console.log(anchor.href)
-// const form = document.querySelector('form')!
-const form = document.querySelector('.new-item-form'); // <--- it will still pull the form we are looking for BUT it will not recognize the HTML element or set the specialized type to HTMLFormElement, only type: Element
-const formWithTypecasting = document.querySelector('.new-item-form');
-// console.log(formWithTypecasting.children)
+class Invoice {
+    constructor(c, d, a) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    format() {
+        return `${this.client} owes $${this.amount} for ${this.details}`;
+    }
+}
+const inv1 = new Invoice('alie', 'work on the website', 300);
+const inv2 = new Invoice('andi', 'work on the website', 250);
+let invoices = []; // <--- only objects created with the Invoice class are allowed in the array
+invoices.push(inv1);
+invoices.push(inv2);
+console.log(invoices);
+inv1.client = 'sam';
+inv2.amount = 600;
+console.log(invoices); // <--- we can see the values on the invoices have been changed
+const form = document.querySelector('.new-item-form');
 const type = document.querySelector('#type');
 const toFrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');

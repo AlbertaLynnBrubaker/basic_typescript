@@ -1,19 +1,33 @@
-const anchor = document.querySelector('a')! // <--- adding an exclamation mark lets TS know that WE KNOW that variable will come back correctly
+class Invoice {
+  client: string
+  details: string
+  amount: number
+  
+  constructor (c: string, d: string, a: number) {
+    this.client =  c
+    this.details = d
+    this.amount = a
+  }
 
-//   console.log(anchor.href) <--- TS throws an error because it does not have access to the index.html page until after it compiles and it is worried our anchor is going to come back null
+  format() {
+    return `${this.client} owes $${this.amount} for ${this.details}`
+  }
+}
 
-// if(anchor){ <--- we can either add runtime logic to clear compiler errors
-//   console.log(anchor.href)
-// } 
+const inv1 = new Invoice('alie', 'work on the website', 300)
+const inv2 = new Invoice('andi', 'work on the website', 250)
 
-// console.log(anchor.href)
+let invoices: Invoice[] = [] // <--- only objects created with the Invoice class are allowed in the array
+invoices.push(inv1)
+invoices.push(inv2)
+console.log(invoices)
 
-// const form = document.querySelector('form')!
-const form = document.querySelector('.new-item-form')! // <--- it will still pull the form we are looking for BUT it will not recognize the HTML element or set the specialized type to HTMLFormElement, only type: Element
+inv1.client = 'sam'
+inv2.amount = 600
 
-const formWithTypecasting = document.querySelector('.new-item-form') as HTMLFormElement
+console.log(invoices) // <--- we can see the values on the invoices have been changed
 
-// console.log(formWithTypecasting.children)
+const form = document.querySelector('.new-item-form') as HTMLFormElement
 
 const type = document.querySelector('#type') as HTMLSelectElement
 const toFrom = document.querySelector('#tofrom') as HTMLInputElement
