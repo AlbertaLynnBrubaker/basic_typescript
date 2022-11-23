@@ -1,10 +1,18 @@
 "use strict";
 class Invoice {
-    constructor(c, d, a) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
-    }
+    // readonly client: string
+    // public details: string
+    // private amount: number // <--- we can explicitly declare something public BUT public is the default behavior of a class. If we change it to private, we will get errors because we will not be allowed to log the variables OR change them. readonly will not let us change a variable inside the class or outside the class
+    // constructor (c: string, d: string, a: number) {
+    //   this.client =  c
+    //   this.details = d
+    //   this.amount = a
+    // }
+    constructor(client, details, amount) {
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
+    } // IF we are using the access modifiers, this method of writing the constructor works OTHERWISE we have to use the syntax above
     format() {
         return `${this.client} owes $${this.amount} for ${this.details}`;
     }
@@ -15,9 +23,9 @@ let invoices = []; // <--- only objects created with the Invoice class are allow
 invoices.push(inv1);
 invoices.push(inv2);
 console.log(invoices);
-inv1.client = 'sam';
-inv2.amount = 600;
-console.log(invoices); // <--- we can see the values on the invoices have been changed
+invoices.forEach(inv => {
+    console.log(inv.format());
+});
 const form = document.querySelector('.new-item-form');
 const type = document.querySelector('#type');
 const toFrom = document.querySelector('#tofrom');

@@ -369,3 +369,39 @@ form.addEventListener('submit', (e: Event) => {
   )
 })
 ```
+************************************************************
+
+## LESSON 11 CLASSES
+
+```class Invoice {
+  client: string
+  details: string
+  amount: number
+  
+  constructor (c: string, d: string, a: number) {
+    this.client =  c
+    this.details = d
+    this.amount = a
+  }
+
+  format() {
+    return `${this.client} owes $${this.amount} for ${this.details}`
+  }
+}
+
+const inv1 = new Invoice('alie', 'work on the website', 300)
+const inv2 = new Invoice('andi', 'work on the website', 250)
+
+let invoices: Invoice[] = [] // <--- only objects created with the Invoice class are allowed in the array
+invoices.push(inv1)
+invoices.push(inv2)
+console.log(invoices)
+
+inv1.client = 'sam'
+inv2.amount = 600
+
+console.log(invoices) // <--- we can see the values on the invoices have been changed
+
+... form stuff from lesson 10 ...
+
+```
